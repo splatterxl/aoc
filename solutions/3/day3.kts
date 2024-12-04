@@ -3,7 +3,7 @@ import java.io.File
 val input = File("input.txt").readText();
 val part1 = Regex("""mul\((?<one>\d+),(?<two>\d+)\)""")
 
-// part 2
+// part 1
 val sum = part1.findAll(input).map {
     val (one, two) = it.groups.toList().drop(1).map { it!!.value.toInt() }
 
