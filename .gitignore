@@ -4,5 +4,5 @@ inputs/*
 **/example.txt
 solutions/*/target 
 node_modules
-package.json
+# package.json
 .idea
