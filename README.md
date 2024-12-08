@@ -5,4 +5,5 @@
 3. Kotlin ⭐⭐
 4. JavaScript ⭐
 5. *Not done*
-6. TypeScript ⭐
+6. TypeScript ⭐⭐
+7. JavaScript
