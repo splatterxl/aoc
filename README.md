@@ -4,6 +4,8 @@
 2. Rust ⭐⭐
 3. Kotlin ⭐⭐
 4. JavaScript ⭐
-5. *Not done*
+5. _Not done_
 6. TypeScript ⭐⭐
-7. JavaScript
+7. _Not done_
+8. _Not done_
+9. Rust ⭐⭐
