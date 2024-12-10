@@ -80,12 +80,6 @@ fn main() {
             .cloned()
             .collect::<Vec<File>>();
 
-        let str = order
-            .iter()
-            .map(|file| file.data.unwrap().to_string())
-            .collect::<Vec<String>>()
-            .join(",");
-
         for File { data, size } in order {
             let first_suitable = list.iter().position(|f| f.data.is_none() && f.size >= size);
             if first_suitable.is_none() {
