@@ -1,4 +1,4 @@
-use std::fs;
+use std::{collections::HashMap, fs};
 
 fn main() {
     let input = fs::read_to_string("input.txt").unwrap();
@@ -9,10 +9,19 @@ fn main() {
 
     let mut count = 0;
 
-    fn blink(number: u64, count: u32, limit: u32) -> u32 {
-        let str = number.to_string();
+    fn blink(
+        stone: u64,
+        current_depth: u32,
+        limit: u32,
+        memo: &mut HashMap<(u64, u32), u64>,
+    ) -> u64 {
+        if let Some(&result) = memo.get(&(stone, current_depth)) {
+            return result;
+        }
 
-        let new: Vec<u64> = match number {
+        let str = stone.to_string();
+
+        let new: Vec<u64> = match stone {
             0 => vec![1],
             _ if str.len() % 2 == 0 => {
                 // split through the middle
@@ -23,31 +32,33 @@ fn main() {
 
                 vec![left, right]
             }
-            _ => vec![number as u64 * 2024],
+            _ => vec![stone as u64 * 2024],
         };
 
-        if count == limit {
-            return new.len() as u32;
-        }
+        if current_depth == limit {
+            let result = new.len() as u64;
 
-        let count = count + 1;
+            return result;
+        }
 
         let mut total = 0;
 
-        for n in new {
-            total += blink(n, count, limit);
+        for stone in new {
+            total += blink(stone, current_depth + 1, limit, memo);
         }
 
-        return total;
+        memo.insert((stone, current_depth), total);
+
+        total
     }
+
+    let mut memo = HashMap::new();
 
     // part 1
 
     for number in numbers {
-        count += blink(number, 1, 25);
+        count += blink(number, 1, 75, &mut memo);
     }
 
-    println!("Part 1: {}", count);
-
-    // TODO: make this more efficient so that we can do part 2
+    println!("Answer: {}", count);
 }
