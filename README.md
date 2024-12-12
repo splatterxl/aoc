@@ -10,3 +10,4 @@
 8. _Not done_
 9. Rust ⭐⭐
 10. Kotlin ⭐⭐
+11. Rust ⭐
